@@ -157,24 +157,14 @@ int main()
 	int *result;
 	int i = 0;
 	start = time(NULL);
-
 	result = quick(arr);
+	end = time(NULL);
+	
 	while (i < 10)
 	{
 		printf("%d, ",result[i]);
 		i++;
-	}
+	}	
 
-	end = time(NULL);
-	printf("\n%ld", end - start);
-
-	start = time(NULL);
-	result = insert(arr);
-	end = time(NULL);
-	while (i < 10)
-	{
-		printf("%d", result[i]);
-		i++;
-	}
 	printf("\n%ld", end - start);
 }
