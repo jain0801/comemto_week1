@@ -36,45 +36,55 @@ int	*insert(int *arr)
 	return (arr);
 }
 
+int	len(int *arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
 void	*merge(int *arr, int low, int mid, int high)
 {
-	int tmp[high - low];
+	int tmp[high - low + 1];
 	int i;
 	int j;
-	int l;
+	int k;
 
-	l = 0;
+	k = low;
 	i = low;
-	j = high;
-	while (l <= high - low)
+	j = mid + 1;
+	while (k <= high)
 	{
 		if (i > mid)
 		{
-			tmp[l] = arr[j];
+			tmp[k - low] = arr[j];
 			j += 1;
 		}
 		else if (j > high)
 		{
-			tmp[l] = arr[i];
+			tmp[k - low] = arr[i];
 			i += 1;
 		}
 		else if (arr[j] < arr[i])
 		{
-			tmp[l] = arr[j];
+			tmp[k - low] = arr[j];
 			j += 1;
 		}
 		else
 		{
-			tmp[l] = arr[i];
+			tmp[k - low] = arr[i];
 			i += 1;
 		}
-		l++;
+		k++;
 	}
-	l = 0;
-	while (l <= high)
+	k = low;
+	while (k <= high)
 	{
-		arr[l + low] = tmp[l];
-		l++;
+		arr[k] = tmp[k - low];
+		k++;
 	}
 }
 
