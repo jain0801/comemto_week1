@@ -15,21 +15,25 @@ int	*insert(int *arr)
 {
 	int i;
 	int j;
+	int k;
 	int tmp;
 
 	i = 0;
 	while (arr[i] != 0)
 	{
+	    k = i;
 		j = i - 1;
-		while (arr[i] > arr[j])
+		while (j >= 0 && arr[k] < arr[j])
 		{
-			tmp = arr[i];
-			arr[i] = arr[j];
+			tmp = arr[k];
+			arr[k] = arr[j];
 			arr[j] = tmp;
-			j--;
+			k--;
+			j = k - 1;
 		}
 		i++;
 	}
+	return (arr);
 }
 
 void	*merge(int *arr, int low, int mid, int high)
